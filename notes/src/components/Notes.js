@@ -7,8 +7,8 @@ import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 const NotesCard = styled(Paper) (({NotesBg, TextColor}) => ({
     background: `${NotesBg}`,
     color: `${TextColor}`,
-    height: '275px',
-    width: '275px',
+    height: 'calc(200px + 5vw)',
+    width: 'calc(178.5px + 6.5vw)',
     margin: '20px 10px 0 10px',
     borderRadius: '8px',
     padding: '15px',
@@ -33,12 +33,12 @@ const Notes = () => {
         <div>
             <NotesCard NotesBg={theme.block_color} TextColor={theme.text_color} >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <div style={{ background: `${theme.nav_color}`, height: '40px', width: '75%', fontSize: 'larger', padding: '0 10px', borderRadius: '5px', display: 'flex', alignItems: 'center'}}>
+                    <div style={{ background: `${theme.nav_color}`, height: '40px', width: '75%', padding: '0 10px', borderRadius: '5px', display: 'flex', alignItems: 'center', fontSize: 'calc(10px + 0.5vw)'}}>
                         <TruncateText text={title} maxLength={24}> </TruncateText>
                     </div>
                     <WysiwygIcon fontSize='medium' style={{ cursor: 'pointer', fontSize: '30px' }}></WysiwygIcon>
                 </div>
-                <div style={{ height: '210px', padding: '10px 5px', overflow: 'hidden', fontSize: '17px', color: `${theme.desc_color}`}}>
+                <div style={{ height: '210px', padding: '10px 5px', overflow: 'hidden', fontSize: 'calc(10px + 0.4vw)', color: `${theme.desc_color}`}}>
                     <TruncateText  text={desc} maxLength={325}> </TruncateText>
                 </div>
             </NotesCard>

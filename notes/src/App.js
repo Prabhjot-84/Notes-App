@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const Page = styled('div') (( {backgroundColor} ) => ({
   background : `${backgroundColor}`,
   minHeight: '96vh',
-  padding: '2vh 1.1vw',
+  padding: '1.1vw',
 })); 
 
 function App() {
