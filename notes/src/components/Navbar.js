@@ -17,35 +17,39 @@ const Nav = styled(AppBar) (( {navColor} ) => ({
 
 const InnerNav = styled(Toolbar)`
   padding: 0px 1vw;
+  display: flex;
+  align-items: center;
 `;
 
-const Logo = styled(Typography) (({TextColor}) => ({
+const Logo = styled(Typography) (({textcolor}) => ({
     fontSize: 'calc(17px + 1vw)',
-    margin: "0 2vw 0 0",
-    color: `${TextColor}`
+    margin: "0 1vw 0 0",
+    color: `${textcolor}`,
+    display: 'grid',
+    placeItems: 'center',
 }))
 
 const OptionsContainer = styled(Box)`
     display: flex;
     align-items: center;
     justify-content: space-evenly; 
-    width: 375px;
+    width: calc(325px + 4vw);
 `;
 
-const Options = styled(NavLink) (({ HoverColor, TextColor }) => ({
+const Options = styled(NavLink) (({ hovercolor, textcolor }) => ({
     cursor: 'pointer',
     fontSize: 'calc(14px + 0.6vw)',
     '&:hover': {
-      background: `${HoverColor}`, 
+      background: `${hovercolor}`, 
     },
     borderRadius: '7px',
     padding: '7px 14px',
     textAlign: 'center',
     textDecoration: 'none',
-    color: `${TextColor}`,
+    color: `${textcolor}`,
 }));
 
-const ThemeMode = styled(Brightness4Icon)`
+const ThemeMode = styled(Brightness4Icon)` 
     margin-left: auto;
     cursor: pointer;
 `;
@@ -55,14 +59,21 @@ const Navbar = () => {
 
     const {theme, toggleTheme} = useAppContext();
 
+    const optionsProps = {
+        hovercolor: theme.block_color,
+        textcolor: theme.text_color,
+    };
+
     return (
         <Nav style = {{ backgroundColor : `${theme.nav_color}`, position: 'sticky' }} >
             <InnerNav>
-                <Logo TextColor={theme.text_color} > POTES </Logo>
+                <Logo textcolor={theme.text_color} >
+                    <img src="/N.png" alt="N" style={{ height: 'calc(1.8rem + 2vw )' }} />
+                </Logo>
                 <OptionsContainer>
-                    <Options to='/' HoverColor={theme.block_color} TextColor={theme.text_color} > Home </Options>
-                    <Options to='addnotes' HoverColor={theme.block_color} TextColor={theme.text_color} > Add Notes </Options>
-                    <Options to='allnotes' HoverColor={theme.block_color} TextColor={theme.text_color} > All Notes </Options>
+                    <Options to='/' {...optionsProps}> Home </Options>
+                    <Options to='addnotes' {...optionsProps}> Add Notes </Options>
+                    <Options to='allnotes' {...optionsProps}> All Notes </Options>
                 </OptionsContainer>
                 <ThemeMode style={{ color : `${theme.text_color}`}} onClick={toggleTheme} />
             </InnerNav>

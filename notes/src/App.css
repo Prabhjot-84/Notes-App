@@ -1,3 +1,13 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.notesDesc::-webkit-scrollbar {
+  display: none;
+}
+
 .App {
   text-align: center;
 }

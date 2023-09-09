@@ -3,13 +3,14 @@ import { Paper } from '@mui/material'
 import React from 'react'
 import { useAppContext } from '../context/AppContext'
 import WysiwygIcon from '@mui/icons-material/Wysiwyg';
+import { NavLink } from 'react-router-dom';
 
-const NotesCard = styled(Paper) (({NotesBg, TextColor}) => ({
-    background: `${NotesBg}`,
-    color: `${TextColor}`,
+const NotesCard = styled(Paper) (({notesbg, textcolor}) => ({
+    background: `${notesbg}`,
+    color: `${textcolor}`,
     height: 'calc(200px + 5vw)',
     width: 'calc(178.5px + 6.5vw)',
-    margin: '20px 10px 0 10px',
+    margin: '20px 10px 0 10px', 
     borderRadius: '8px',
     padding: '15px',
 }))
@@ -31,15 +32,17 @@ const Notes = () => {
 
     return (
         <div>
-            <NotesCard NotesBg={theme.block_color} TextColor={theme.text_color} >
+            <NotesCard notesbg={theme.block_color} textcolor={theme.text_color} >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <div style={{ background: `${theme.nav_color}`, height: '40px', width: '75%', padding: '0 10px', borderRadius: '5px', display: 'flex', alignItems: 'center', fontSize: 'calc(10px + 0.5vw)'}}>
-                        <TruncateText text={title} maxLength={24}> </TruncateText>
-                    </div>
-                    <WysiwygIcon fontSize='medium' style={{ cursor: 'pointer', fontSize: '30px' }}></WysiwygIcon>
+                    <div style={{ background: `${theme.nav_color}`, height: '40px', width: '80%', padding: '0 10px', borderRadius: '5px', display: 'flex', alignItems: 'center', fontSize: 'calc(10px + 0.5vw)'}}>
+                        <TruncateText text={title} maxLength={20}> </TruncateText>
+                    </div> 
+                    <NavLink to="/edit" style={{ textDecoration: 'none' }}>
+                        <WysiwygIcon style={{ cursor: 'pointer', fontSize: '30px', color: `${theme.text_color}` }} fontSize="medium" />
+                    </NavLink>
                 </div>
-                <div style={{ height: '210px', padding: '10px 5px', overflow: 'hidden', fontSize: 'calc(10px + 0.4vw)', color: `${theme.desc_color}`}}>
-                    <TruncateText  text={desc} maxLength={325}> </TruncateText>
+                <div className='notesDesc' style={{ height: '84%', padding: '10px 5px', overflow: 'hidden', overflowY: 'scroll', fontSize: 'calc(10px + 0.4vw)', color: `${theme.desc_color}`}}>
+                    {desc}
                 </div>
             </NotesCard>
         </div>
